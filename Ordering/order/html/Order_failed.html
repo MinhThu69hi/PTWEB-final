@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt hàng không thành công</title>
-    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <!-- Đường dẫn CSS chính xác -->
     <link rel="stylesheet" href="../css/Order_failed.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
 
     <div class="page-container">
         <nav class="site-nav">
-            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
-            <a href="../../basket/index.html" class="logo">CANIFA</a>
+            <!-- Liên kết logo về trang giỏ hàng -->
+            <a href="../../../basket/index.html" class="logo">CANIFA</a>
         </nav>
 
         <main class="main-content">
@@ -28,7 +28,7 @@
                         </svg>
                     </div>
                     <h2>Đặt hàng không thành công</h2>
-                    <p>Đơn hàng thanh toán thất bại.</p>
+                    <p>Đơn hàng thanh toán thất bại hoặc đã hết hạn.</p>
                 </div>
 
                 <div class="order-summary">
@@ -39,13 +39,15 @@
                         <div class="detail-row">
                             <span class="label">Mã đơn hàng</span>
                             <div class="value-with-action">
-                                <span class="value">CNF1000108580</span>
+                                <!-- ID để cập nhật động -->
+                                <span class="value" id="failed-order-id">Đang tải...</span>
                                 <a href="#" class="action-link copy-link">Copy</a>
                             </div>
                         </div>
                         <div class="detail-row">
                             <span class="label">Tổng tiền</span>
-                            <span class="value price">1.248.000 đ</span>
+                             <!-- ID để cập nhật động -->
+                            <span class="value price" id="failed-order-total">0 đ</span>
                         </div>
                     </div>
                 </div>
@@ -58,26 +60,50 @@
         </main>
     </div>
 
-    <!-- === JAVASCRIPT === -->
-    <!-- ĐÃ SỬA: Nhúng JS từ file ngoài và cập nhật logic điều hướng -->
-    <script src="../js/Order_failed.js"></script>
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC CẬP NHẬT HOÀN TOÀN === -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            function goToCheckout() {
-                // ĐÃ SỬA: Chuyển về trang thông tin thanh toán để thử lại
-                window.location.href = '../../../Payment/html/order_information.html'; 
+            // --- 1. Đọc và hiển thị dữ liệu động ---
+            const cartDataString = sessionStorage.getItem('cartData');
+            const orderIdEl = document.getElementById('failed-order-id');
+            const orderTotalEl = document.getElementById('failed-order-total');
+
+            if (cartDataString) {
+                const cartData = JSON.parse(cartDataString);
+                // Tạo một mã đơn hàng giả lập để hiển thị
+                const randomOrderId = 'CNF' + Math.floor(1000000000 + Math.random() * 9000000000);
+                orderIdEl.innerText = randomOrderId;
+                orderTotalEl.innerText = cartData.total.toLocaleString('vi-VN') + ' đ';
+            } else {
+                orderIdEl.innerText = "Không có thông tin";
+                orderTotalEl.innerText = "0 đ";
             }
 
-            const retryButton = document.querySelector('.retry-button');
-            if (retryButton) {
-                retryButton.addEventListener('click', goToCheckout);
+            // --- 2. Gắn sự kiện cho các nút bấm ---
+            const copyLink = document.querySelector('.copy-link');
+            if (copyLink) {
+                copyLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const orderIdToCopy = orderIdEl.innerText;
+                    navigator.clipboard.writeText(orderIdToCopy).then(() => {
+                        this.innerText = 'Đã copy!';
+                        setTimeout(() => { this.innerText = 'Copy'; }, 2000);
+                    });
+                });
             }
 
             const changeMethodLink = document.querySelector('.change-method-link');
             if (changeMethodLink) {
                 changeMethodLink.addEventListener('click', function(e) {
                     e.preventDefault();
-                    goToCheckout();
+                    window.location.href = '../../../Payment/html/order_information.html';
+                });
+            }
+
+            const retryButton = document.querySelector('.retry-button');
+            if (retryButton) {
+                retryButton.addEventListener('click', function() {
+                    window.location.href = '../../../Payment/html/VNpay_order_infor.html';
                 });
             }
         });

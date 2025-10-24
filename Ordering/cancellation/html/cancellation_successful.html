@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hủy hàng thành công</title>
-    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <!-- Đường dẫn CSS chính xác -->
     <link rel="stylesheet" href="../css/cancellation_successful.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
     <div class="page-container">
         <header class="site-header">
-            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
+            <!-- Liên kết logo về trang giỏ hàng -->
             <a href="../../basket/index.html" class="logo">CANIFA</a>
             <nav class="progress-steps">
                 <ol>
@@ -45,25 +45,30 @@
                         <div class="detail-row">
                             <span class="label">Mã đơn hàng</span>
                             <div class="value-with-action">
-                                <span class="value">CNF1000108578</span>
+                                <!-- ĐÃ THÊM ID -->
+                                <span class="value" id="order-id">Đang tải...</span>
                                 <a href="#" class="action-link copy-link">Copy</a>
                             </div>
                         </div>
                         <div class="detail-row">
                             <span class="label">Người nhận</span>
-                            <span class="value">T**************</span>
+                             <!-- ĐÃ THÊM ID -->
+                            <span class="value" id="user-name">Đang tải...</span>
                         </div>
                         <div class="detail-row">
                             <span class="label">Địa chỉ</span>
-                            <span class="value">***,***,***,Hà Nội</span>
+                             <!-- ĐÃ THÊM ID -->
+                            <span class="value" id="user-address">Đang tải...</span>
                         </div>
                         <div class="detail-row">
                             <span class="label">Thanh toán</span>
-                            <span class="value">Thanh toán khi nhận hàng (COD)</span>
+                             <!-- ĐÃ THÊM ID -->
+                            <span class="value" id="payment-method">Đang tải...</span>
                         </div>
                         <div class="detail-row">
                             <span class="label">Tổng tiền</span>
-                            <span class="value price">898.000 đ <span class="product-count">(2 sản phẩm)</span></span>
+                             <!-- ĐÃ THÊM ID -->
+                            <span class="value price" id="order-total">Đang tải...</span>
                         </div>
                     </div>
                 </div>
@@ -75,16 +80,55 @@
         </main>
     </div>
 
-    <!-- === JAVASCRIPT === -->
-    <!-- ĐÃ SỬA: Liên kết đến file JS ngoài -->
-    <script src="../js/cancellation_successful.js"></script>
-    <!-- Script nhỏ để đảm bảo nút "Về trang chủ" trỏ đến trang quản lý đơn hàng -->
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC NÂNG CẤP HOÀN TOÀN === -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Đọc dữ liệu đơn hàng đã hủy từ sessionStorage ---
+            const cancelledOrderDataString = sessionStorage.getItem('cancelledOrderData');
+            
+            if (cancelledOrderDataString) {
+                const orderData = JSON.parse(cancelledOrderDataString);
+
+                // --- 2. Cập nhật giao diện với dữ liệu động ---
+                document.getElementById('order-id').innerText = orderData.id;
+                document.getElementById('user-name').innerText = orderData.name;
+                document.getElementById('user-address').innerText = orderData.address;
+                document.getElementById('payment-method').innerText = orderData.paymentMethod;
+
+                // Trích xuất số lượng sản phẩm từ chuỗi "Sản phẩm (1)"
+                const productCountMatch = orderData.productCountText.match(/\((\d+)\)/);
+                const productCount = productCountMatch ? productCountMatch[1] : 0;
+                document.getElementById('order-total').innerText = `${orderData.total} (${productCount} sản phẩm)`;
+
+                // --- 3. Xóa dữ liệu khỏi sessionStorage sau khi đã sử dụng ---
+                sessionStorage.removeItem('cancelledOrderData');
+            } else {
+                console.log("Không tìm thấy dữ liệu đơn hàng đã hủy. Hiển thị thông tin mặc định.");
+                // Cập nhật các trường về giá trị mặc định nếu không có dữ liệu
+                document.getElementById('order-id').innerText = "CNFXXXXXXX";
+                document.getElementById('user-name').innerText = "Không có thông tin";
+                document.getElementById('user-address').innerText = "Không có thông tin";
+                document.getElementById('payment-method').innerText = "Không có thông tin";
+                document.getElementById('order-total').innerText = "0 đ (0 sản phẩm)";
+            }
+
+            // --- 4. Logic cho các nút bấm ---
+            const copyLink = document.querySelector('.copy-link');
+            if (copyLink) {
+                copyLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const orderIdToCopy = document.getElementById('order-id').innerText;
+                    navigator.clipboard.writeText(orderIdToCopy).then(() => {
+                        this.innerText = 'Đã copy!';
+                        setTimeout(() => { this.innerText = 'Copy'; }, 2000);
+                    });
+                });
+            }
+
             const homeButton = document.querySelector('.home-button');
             if (homeButton) {
                 homeButton.addEventListener('click', function() {
-                    // ĐÃ SỬA: Điều hướng về trang danh sách đơn hàng
+                    // Điều hướng về trang danh sách đơn hàng
                     window.location.href = '../../order/html/order.html';
                 });
             }

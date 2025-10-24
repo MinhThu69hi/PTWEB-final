@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết Đơn hàng</title>
-    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <!-- Đường dẫn CSS chính xác -->
     <link rel="stylesheet" href="../css/order_code.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Thêm style cho trạng thái đã hủy và nút bị vô hiệu hóa */
+        .status-tag.status-canceled {
+            background-color: #f1f3f5;
+            color: #868e96;
+            border: 1px solid #dee2e6;
+        }
+        .cancel-button:disabled {
+            background-color: #ced4da;
+            cursor: not-allowed;
+            border-color: #ced4da;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,120 +33,121 @@
                     Xin chào!<strong>Phuong</strong>
                 </div>
                 <nav class="sidebar-nav">
-                    <a href="#" class="nav-item">
-                        <span class="nav-icon-placeholder"></span>
-                        <div class="nav-text">
-                            <h4>Thông tin tài khoản <span class="notification-dot"></span></h4>
-                            <p><span class="highlight">Cập nhật ngay!</span></p>
-                            <p>Cập nhật thông tin tài khoản</p>
-                        </div>
-                    </a>
-                    <!-- ĐÃ SỬA: Liên kết đến trang danh sách đơn hàng -->
-                    <a href="../html/order.html" class="nav-item active">
-                        <span class="nav-icon-placeholder"></span>
-                        <div class="nav-text">
-                            <h4>Đơn hàng <span class="notification-dot"></span><span class="status-tag-inline">Đang xử lý</span></h4>
-                            <p>Tra cứu thông tin vận chuyển</p>
-                        </div>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <span class="nav-icon-placeholder"></span>
-                        <div class="nav-text">
-                            <h4>Sổ địa chỉ</h4>
-                            <p>Cập nhật địa chỉ giao hàng</p>
-                        </div>
-                    </a>
+                    <a href="#" class="nav-item"><span class="nav-icon-placeholder"></span><div class="nav-text"><h4>Thông tin tài khoản <span class="notification-dot"></span></h4><p><span class="highlight">Cập nhật ngay!</span></p><p>Cập nhật thông tin tài khoản</p></div></a>
+                    <a href="../html/order.html" class="nav-item active"><span class="nav-icon-placeholder"></span><div class="nav-text"><h4>Đơn hàng <span class="notification-dot"></span><span class="status-tag-inline">Đang xử lý</span></h4><p>Tra cứu thông tin vận chuyển</p></div></a>
+                    <a href="#" class="nav-item"><span class="nav-icon-placeholder"></span><div class="nav-text"><h4>Sổ địa chỉ</h4><p>Cập nhật địa chỉ giao hàng</p></div></a>
                 </nav>
             </div>
-            <a href="#" class="logout-link">
-                <span class="nav-icon-placeholder"></span>
-                <span>Đăng xuất</span>
-            </a>
+            <a href="#" class="logout-link"><span class="nav-icon-placeholder"></span><span>Đăng xuất</span></a>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Main Content sẽ được cập nhật động bởi JavaScript -->
         <main class="main-content">
             <button class="back-btn">Back</button>
             <div class="order-header">
-                <h1>Mã đơn hàng: <strong>CNF1000108581</strong></h1>
-                <span class="status-tag">Đang xử lý</span>
+                <h1>Mã đơn hàng: <strong id="order-id">Đang tải...</strong></h1>
+                <span class="status-tag" id="order-status"></span>
                 <a href="#" class="copy-link">Copy</a>
             </div>
-            <p class="order-date">Ngày mua hàng: 12/10/2025 - 11:37</p>
-
+            <p class="order-date" id="order-date"></p>
             <hr>
-
             <div class="info-section">
-                <h4>Địa chỉ nhận hàng</h4>
-                <p>T**************</p>
-                <p>*********368</p>
-                <p>***, ***, ***, Hà Nội</p>
+                <h4>Địa chỉ nhận hàng (Ví dụ)</h4>
+                <p>T**************</p><p>*********368</p><p>***, ***, ***, Hà Nội</p>
             </div>
-
             <hr>
-
             <div class="products-section">
-                <h4>Sản phẩm (1)</h4>
-                <div class="product-item">
-                    <!-- ĐÃ SỬA: Đường dẫn hình ảnh chính xác -->
-                    <img src="../../images/products/menu khách lẻ/ít calo/L4.png" alt="Ức gà khoai tây" class="product-image">
-                    <p class="product-name">Ức gà khoai tây</p>
-                    <span class="product-quantity">x 1</span>
-                    <div class="product-price">
-                        <span class="discount-tag">-17%</span>
-                        <s class="original-price">299.000 đ</s>
-                        <span class="final-price">249.000 đ</span>
-                    </div>
-                </div>
+                <h4 id="product-section-title">Sản phẩm (0)</h4>
+                <div id="product-list"></div>
             </div>
-
             <hr>
-            
             <div class="summary-section">
-                <div class="summary-row">
-                    <span class="summary-label">Giá trị đơn hàng</span>
-                    <span class="summary-value">299.000 đ</span>
-                </div>
-                <div class="summary-row">
-                    <span class="summary-label">Phí vận chuyển</span>
-                    <span class="summary-value">20.000 đ</span>
-                </div>
-                <div class="summary-row total-row">
-                    <div class="summary-label">
-                        <strong>Tổng tiền thanh toán</strong>
-                    </div>
-                    <div class="summary-value">
-                        <strong class="total-price">269.000 đ</strong>
-                    </div>
-                </div>
+                <div class="summary-row"><span class="summary-label">Giá trị đơn hàng</span><span class="summary-value" id="summary-subtotal">0 đ</span></div>
+                <div class="summary-row"><span class="summary-label">Phí vận chuyển</span><span class="summary-value" id="summary-shipping">0 đ</span></div>
+                <div class="summary-row total-row"><div class="summary-label"><strong>Tổng tiền thanh toán</strong></div><div class="summary-value"><strong class="total-price" id="summary-total">0 đ</strong></div></div>
             </div>
-
             <div class="order-actions">
                 <button class="cancel-button">Hủy đơn hàng</button>
             </div>
         </main>
     </div>
 
-    <!-- === JAVASCRIPT === -->
-    <!-- ĐÃ SỬA: Liên kết đến file JS ngoài -->
-    <script src="../js/order_code.js"></script>
-    
-    <!-- Script nhỏ để sửa logic điều hướng của nút Hủy cho đúng cấu trúc file -->
+    <!-- === JAVASCRIPT ĐỂ HIỂN THỊ VÀ CẬP NHẬT DỮ LIỆU ĐỘNG === -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id');
+            const mainContent = document.querySelector('.main-content');
+
+            if (!orderId) { mainContent.innerHTML = '<h1>Không tìm thấy mã đơn hàng.</h1>'; return; }
+
+            const allOrders = JSON.parse(localStorage.getItem('allOrders')) || [];
+            const targetOrder = allOrders.find(order => order.id === orderId);
+
+            if (!targetOrder) { mainContent.innerHTML = `<h1>Đơn hàng với mã ${orderId} không tồn tại.</h1>`; return; }
+
+            const statusTag = document.getElementById('order-status');
             const cancelButton = document.querySelector('.cancel-button');
-            if (cancelButton) {
-                // Ghi đè sự kiện click từ file ngoài để đảm bảo đúng đường dẫn
-                cancelButton.addEventListener('click', function() {
-                    const isConfirmed = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
-                    if (isConfirmed) {
-                        alert('Đã gửi yêu cầu hủy đơn hàng!');
-                        // ĐÃ SỬA: Điều hướng chính xác đến trang hủy thành công
-                        window.location.href = '../../cancellation/html/cancellation_successful.html';
-                    }
-                });
+
+            // 1. Cập nhật trạng thái và giao diện
+            if (targetOrder.status === 'canceled') {
+                statusTag.innerText = 'Đã hủy';
+                statusTag.className = 'status-tag status-canceled';
+                cancelButton.innerText = 'Đơn hàng đã hủy';
+                cancelButton.disabled = true; // Vô hiệu hóa nút
+            } else {
+                statusTag.innerText = 'Đang xử lý';
+                statusTag.className = 'status-tag'; // Trở về class mặc định
+                cancelButton.disabled = false;
             }
+
+            // 2. Điền các thông tin khác
+            document.getElementById('order-id').innerText = targetOrder.id;
+            document.getElementById('order-date').innerText = `Ngày mua hàng: ${targetOrder.date}`;
+            document.getElementById('product-section-title').innerText = `Sản phẩm (${targetOrder.quantity})`;
+            
+            const productListContainer = document.getElementById('product-list');
+            productListContainer.innerHTML = '';
+            targetOrder.products.forEach(product => {
+                const correctedImgSrc = `../${product.imgSrc}`;
+                const productHTML = `<div class="product-item" style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0;"><img src="${correctedImgSrc}" alt="${product.name}" class="product-image"><p class="product-name">${product.name}</p><span class="product-quantity">x ${product.quantity}</span><div class="product-price"><span class="final-price">${(product.price * product.quantity).toLocaleString('vi-VN')} đ</span></div></div>`;
+                productListContainer.insertAdjacentHTML('beforeend', productHTML);
+            });
+
+            document.getElementById('summary-subtotal').innerText = targetOrder.subtotal.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('summary-shipping').innerText = targetOrder.shipping.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('summary-total').innerText = targetOrder.total.toLocaleString('vi-VN') + ' đ';
+
+            // 3. Gắn lại sự kiện hủy đơn hàng (ghi đè file js ngoài)
+            cancelButton.addEventListener('click', function() {
+                if (this.disabled) return; // Không làm gì nếu nút đã bị vô hiệu hóa
+
+                if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
+                    let currentOrders = JSON.parse(localStorage.getItem('allOrders')) || [];
+                    const orderIndex = currentOrders.findIndex(order => order.id === orderId);
+                    
+                    if (orderIndex !== -1) {
+                        currentOrders[orderIndex].status = 'canceled';
+                        localStorage.setItem('allOrders', JSON.stringify(currentOrders));
+                    }
+                    
+                    const orderDataToCancel = {
+                        id: targetOrder.id,
+                        name: "T**************",
+                        address: "***, ***, ***, Hà Nội",
+                        paymentMethod: "Thanh toán khi nhận hàng (COD)",
+                        total: targetOrder.total.toLocaleString('vi-VN') + ' đ',
+                        productCountText: `Sản phẩm (${targetOrder.quantity})`
+                    };
+                    sessionStorage.setItem('cancelledOrderData', JSON.stringify(orderDataToCancel));
+                    window.location.href = '../../cancellation/html/cancellation_successful.html';
+                }
+            });
         });
     </script>
+    
+    <!-- Giữ lại file JS ngoài cho các chức năng chung như Back, Copy -->
+    <script src="../js/order_code.js"></script>
+
 </body>
 </html>

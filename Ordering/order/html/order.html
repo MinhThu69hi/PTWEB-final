@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Đơn hàng</title>
-    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <!-- Đường dẫn CSS chính xác -->
     <link rel="stylesheet" href="../css/order.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
                             <p>Cập nhật thông tin tài khoản</p>
                         </div>
                     </a>
-                    <!-- ĐÃ SỬA: Liên kết đến chính trang này -->
+                    <!-- Liên kết đến chính trang này -->
                     <a href="../html/order.html" class="nav-item active">
                         <span class="nav-icon-placeholder"></span>
                         <div class="nav-text">
@@ -54,90 +54,71 @@
         <!-- Main Content -->
         <main class="main-content">
             <h1 class="main-title">ĐƠN HÀNG</h1>
-            <div class="orders-grid">
-                <!-- Order Card 1 -->
-                <div class="order-card">
-                    <div class="card-details">
-                        <span>Mã đơn hàng</span>
-                        <div class="order-id"><strong>CNF1000108581</strong><span class="placeholder-icon"></span></div>
-                        <span>Ngày đặt hàng</span>
-                        <strong>12/10/2025 - 11:37</strong>
-                        <span>Tổng tiền</span>
-                        <strong>269.000 đ <small>(1 sản phẩm)</small></strong>
-                    </div>
-                    <div class="card-footer">
-                        <span class="status-tag status-processing">Đang xử lý</span>
-                        <!-- ĐÃ SỬA: Liên kết trực tiếp, JS sẽ ghi đè nhưng đây là fallback tốt -->
-                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
-                    </div>
-                </div>
-                <!-- Order Card 2 -->
-                <div class="order-card">
-                    <div class="card-details">
-                        <span>Mã đơn hàng</span>
-                        <div class="order-id"><strong>CNF1000108580</strong><span class="placeholder-icon"></span></div>
-                        <span>Ngày đặt hàng</span>
-                        <strong>12/10/2025 - 11:17</strong>
-                        <span>Tổng tiền</span>
-                        <strong>1.248.000 đ <small>(2 sản phẩm)</small></strong>
-                    </div>
-                    <div class="card-footer">
-                        <span class="status-tag status-pending">Chờ thanh toán</span>
-                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
-                    </div>
-                </div>
-                <!-- Order Card 3 -->
-                <div class="order-card">
-                    <div class="card-details">
-                        <span>Mã đơn hàng</span>
-                        <div class="order-id"><strong>CNF1000108579</strong><span class="placeholder-icon"></span></div>
-                        <span>Ngày đặt hàng</span>
-                        <strong>12/10/2025 - 11:06</strong>
-                        <span>Tổng tiền</span>
-                        <strong>898.000 đ <small>(2 sản phẩm)</small></strong>
-                    </div>
-                    <div class="card-footer">
-                        <span class="status-tag status-processing">Đang xử lý</span>
-                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
-                    </div>
-                </div>
-                <!-- Order Card 4 -->
-                <div class="order-card">
-                    <div class="card-details">
-                        <span>Mã đơn hàng</span>
-                        <div class="order-id"><strong>CNF1000108578</strong><span class="placeholder-icon"></span></div>
-                        <span>Ngày đặt hàng</span>
-                        <strong>12/10/2025 - 11:02</strong>
-                        <span>Tổng tiền</span>
-                        <strong>898.000 đ <small>(2 sản phẩm)</small></strong>
-                    </div>
-                    <div class="card-footer">
-                        <span class="status-tag status-pending">Chờ thanh toán</span>
-                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
-                    </div>
-                </div>
-                <!-- Order Card 5 -->
-                <div class="order-card">
-                    <div class="card-details">
-                        <span>Mã đơn hàng</span>
-                        <div class="order-id"><strong>CNF1000108577</strong><span class="placeholder-icon"></span></div>
-                        <span>Ngày đặt hàng</span>
-                        <strong>12/10/2025 - 10:38</strong>
-                        <span>Tổng tiền</span>
-                        <strong>898.000 đ <small>(2 sản phẩm)</small></strong>
-                    </div>
-                    <div class="card-footer">
-                        <span class="status-tag status-pending">Chờ thanh toán</span>
-                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
-                    </div>
-                </div>
+            <!-- Vùng chứa này sẽ được lấp đầy bởi các đơn hàng động -->
+            <div class="orders-grid" id="orders-grid">
+                <!-- Nội dung được tạo bởi JavaScript -->
             </div>
+            <!-- (Tùy chọn) Nút để xóa dữ liệu test -->
+            <button id="reset-orders-btn" style="margin-top: 20px; padding: 10px 15px; cursor: pointer; border: 1px solid #ccc; background-color: #f0f0f0; border-radius: 4px; font-weight: 500;">
+                Reset danh sách đơn hàng
+            </button>
         </main>
     </div>
 
-    <!-- === JAVASCRIPT === -->
-    <!-- ĐÃ SỬA: Liên kết đến file JS ngoài theo đúng cấu trúc -->
-    <script src="../js/order.js"></script>
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC NÂNG CẤP HOÀN TOÀN === -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ordersGrid = document.getElementById('orders-grid');
+            
+            // 1. Lấy danh sách tất cả đơn hàng từ localStorage
+            const allOrders = JSON.parse(localStorage.getItem('allOrders')) || [];
+
+            // 2. Kiểm tra xem có đơn hàng nào không
+            if (allOrders.length === 0) {
+                ordersGrid.innerHTML = '<p style="font-size: 16px; color: #666;">Bạn chưa có đơn hàng nào.</p>';
+            } else {
+                ordersGrid.innerHTML = ''; // Xóa nội dung cũ để đảm bảo không bị trùng
+
+                // 3. Lặp qua từng đơn hàng và tạo card HTML tương ứng
+                allOrders.forEach(order => {
+                    const statusClass = order.status === 'processing' ? 'status-processing' : 'status-pending';
+                    const statusText = order.status === 'processing' ? 'Đang xử lý' : 'Chờ thanh toán';
+
+                    // Tạo card HTML cho đơn hàng
+                    const orderCardHTML = `
+                        <div class="order-card">
+                            <div class="card-details">
+                                <span>Mã đơn hàng</span>
+                                <div class="order-id"><strong>${order.id}</strong><span class="placeholder-icon"></span></div>
+                                <span>Ngày đặt hàng</span>
+                                <strong>${order.date}</strong>
+                                <span>Tổng tiền</span>
+                                <strong>${order.total.toLocaleString('vi-VN')} đ <small>(${order.quantity} sản phẩm)</small></strong>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-tag ${statusClass}">${statusText}</span>
+                                <!-- ĐÂY LÀ PHẦN NÂNG CẤP QUAN TRỌNG: Tạo link động với ID của đơn hàng -->
+                                <a href="order_code.html?id=${order.id}" class="details-link">Chi tiết</a>
+                            </div>
+                        </div>
+                    `;
+                    // Chèn card vừa tạo vào lưới hiển thị
+                    ordersGrid.insertAdjacentHTML('beforeend', orderCardHTML);
+                });
+            }
+            
+            // 4. (Tùy chọn) Chức năng cho nút Reset
+            const resetButton = document.getElementById('reset-orders-btn');
+            if (resetButton) {
+                resetButton.addEventListener('click', function() {
+                    if (confirm('Bạn có chắc muốn xóa tất cả lịch sử đơn hàng không? Hành động này không thể hoàn tác.')) {
+                        localStorage.removeItem('allOrders');
+                        window.location.reload(); // Tải lại trang để cập nhật giao diện
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>

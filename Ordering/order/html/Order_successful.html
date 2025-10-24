@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt hàng thành công</title>
-    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <!-- Đường dẫn CSS chính xác -->
     <link rel="stylesheet" href="../css/Order_successful.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
     <div class="page-container">
         <header class="site-header">
-            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
+            <!-- Liên kết logo về trang giỏ hàng -->
             <a href="../../basket/index.html" class="logo">CANIFA</a>
             <nav class="progress-steps">
                 <ol>
@@ -46,13 +46,16 @@
                         <div class="detail-row">
                             <span class="label">Mã đơn hàng</span>
                             <div class="value-with-action">
-                                <span class="value">CNF1000108578</span>
+                                <span class="value" id="order-id">Đang tải...</span>
                                 <a href="#" class="action-link copy-link">Copy</a>
                             </div>
                         </div>
                         <div class="detail-row">
                             <span class="label">Tổng tiền</span>
-                            <span class="value price">898.000 đ <span class="product-count">(2 sản phẩm)</span></span>
+                            <span class="value price" id="order-total">
+                                0 đ
+                                <span class="product-count" id="product-count">(0 sản phẩm)</span>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -65,30 +68,85 @@
         </main>
     </div>
 
-    <!-- === JAVASCRIPT === -->
-    <!-- ĐÃ SỬA: Nhúng JS từ file ngoài và cập nhật logic điều hướng -->
-    <script src="../js/order_successful.js"></script>
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC NÂNG CẤP HOÀN TOÀN === -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Đọc dữ liệu giỏ hàng từ sessionStorage ---
+            const cartDataString = sessionStorage.getItem('cartData');
+            
+            if (cartDataString) {
+                const cartData = JSON.parse(cartDataString);
+
+                // --- 2. Cập nhật giao diện ---
+                const orderIdEl = document.getElementById('order-id');
+                const orderTotalEl = document.getElementById('order-total');
+                const productCountEl = document.getElementById('product-count');
+                const randomOrderId = 'CNF' + Math.floor(1000000000 + Math.random() * 9000000000);
+                
+                orderIdEl.innerText = randomOrderId;
+                const totalQuantity = cartData.products.reduce((sum, product) => sum + product.quantity, 0);
+                productCountEl.innerText = `(${totalQuantity} sản phẩm)`;
+                orderTotalEl.innerText = cartData.total.toLocaleString('vi-VN') + ' đ ';
+                orderTotalEl.appendChild(productCountEl);
+
+                // --- 3. Lưu đơn hàng mới vào localStorage để các trang khác có thể truy cập ---
+                let allOrders = JSON.parse(localStorage.getItem('allOrders')) || [];
+
+                // Tạo đối tượng đơn hàng mới với đầy đủ chi tiết
+                const newOrder = {
+                    id: randomOrderId,
+                    date: new Date().toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+                    total: cartData.total,
+                    subtotal: cartData.subtotal,
+                    shipping: cartData.shipping,
+                    quantity: totalQuantity,
+                    status: 'processing', // Trạng thái mặc định
+                    products: cartData.products // Lưu lại chi tiết các sản phẩm trong đơn hàng
+                };
+
+                // Thêm đơn hàng mới vào đầu danh sách
+                allOrders.unshift(newOrder);
+                // Lưu lại danh sách đã cập nhật
+                localStorage.setItem('allOrders', JSON.stringify(allOrders));
+                
+                // --- 4. Dọn dẹp sessionStorage cho phiên mua sắm tiếp theo ---
+                sessionStorage.removeItem('cartData');
+                sessionStorage.removeItem('selectedVoucher');
+            } else {
+                console.log("Không tìm thấy dữ liệu đơn hàng. Hiển thị thông tin mặc định.");
+            }
+
+            // --- 5. Gắn sự kiện cho các nút bấm ---
+            const copyLink = document.querySelector('.copy-link');
+            if (copyLink) {
+                copyLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const orderIdToCopy = document.getElementById('order-id').innerText;
+                    navigator.clipboard.writeText(orderIdToCopy).then(() => {
+                        this.innerText = 'Đã copy!';
+                        setTimeout(() => { this.innerText = 'Copy'; }, 2000);
+                    });
+                });
+            }
+
             const trackOrderLink = document.querySelector('.track-order-link');
             if (trackOrderLink) {
-                // Ghi đè sự kiện để đảm bảo đúng đường dẫn
                 trackOrderLink.addEventListener('click', function(event) {
                     event.preventDefault();
-                    // ĐÃ SỬA: Chuyển đến trang danh sách đơn hàng
-                    window.location.href = '../../Ordering/order/html/order.html';
+                    // Điều hướng chính xác đến file trong cùng thư mục
+                    window.location.href = 'order.html';
                 });
             }
 
             const homeButton = document.querySelector('.home-button');
             if (homeButton) {
-                // Ghi đè sự kiện để đảm bảo đúng đường dẫn
                 homeButton.addEventListener('click', function() {
-                    // ĐÃ SỬA: Chuyển về trang giỏ hàng
+                    // Quay về trang giỏ hàng
                     window.location.href = '../../basket/index.html';
                 });
             }
         });
     </script>
+
 </body>
 </html>
