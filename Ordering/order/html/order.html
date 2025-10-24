@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Đơn hàng</title>
+    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <link rel="stylesheet" href="../css/order.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="welcome-box">
+                    Xin chào!<strong>Phuong</strong>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon-placeholder"></span>
+                        <div class="nav-text">
+                            <h4>Thông tin tài khoản <span class="notification-dot"></span></h4>
+                            <p><span class="highlight">Cập nhật ngay!</span></p>
+                            <p>Cập nhật thông tin tài khoản</p>
+                        </div>
+                    </a>
+                    <!-- ĐÃ SỬA: Liên kết đến chính trang này -->
+                    <a href="../html/order.html" class="nav-item active">
+                        <span class="nav-icon-placeholder"></span>
+                        <div class="nav-text">
+                            <h4>Đơn hàng <span class="notification-dot"></span><span class="status-tag-inline">Đang xử lý</span></h4>
+                            <p>Tra cứu thông tin vận chuyển</p>
+                        </div>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon-placeholder"></span>
+                        <div class="nav-text">
+                            <h4>Sổ địa chỉ</h4>
+                            <p>Cập nhật địa chỉ giao hàng</p>
+                        </div>
+                    </a>
+                </nav>
+            </div>
+            <a href="#" class="logout-link">
+                <span class="nav-icon-placeholder"></span>
+                <span>Đăng xuất</span>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="main-title">ĐƠN HÀNG</h1>
+            <div class="orders-grid">
+                <!-- Order Card 1 -->
+                <div class="order-card">
+                    <div class="card-details">
+                        <span>Mã đơn hàng</span>
+                        <div class="order-id"><strong>CNF1000108581</strong><span class="placeholder-icon"></span></div>
+                        <span>Ngày đặt hàng</span>
+                        <strong>12/10/2025 - 11:37</strong>
+                        <span>Tổng tiền</span>
+                        <strong>269.000 đ <small>(1 sản phẩm)</small></strong>
+                    </div>
+                    <div class="card-footer">
+                        <span class="status-tag status-processing">Đang xử lý</span>
+                        <!-- ĐÃ SỬA: Liên kết trực tiếp, JS sẽ ghi đè nhưng đây là fallback tốt -->
+                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
+                    </div>
+                </div>
+                <!-- Order Card 2 -->
+                <div class="order-card">
+                    <div class="card-details">
+                        <span>Mã đơn hàng</span>
+                        <div class="order-id"><strong>CNF1000108580</strong><span class="placeholder-icon"></span></div>
+                        <span>Ngày đặt hàng</span>
+                        <strong>12/10/2025 - 11:17</strong>
+                        <span>Tổng tiền</span>
+                        <strong>1.248.000 đ <small>(2 sản phẩm)</small></strong>
+                    </div>
+                    <div class="card-footer">
+                        <span class="status-tag status-pending">Chờ thanh toán</span>
+                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
+                    </div>
+                </div>
+                <!-- Order Card 3 -->
+                <div class="order-card">
+                    <div class="card-details">
+                        <span>Mã đơn hàng</span>
+                        <div class="order-id"><strong>CNF1000108579</strong><span class="placeholder-icon"></span></div>
+                        <span>Ngày đặt hàng</span>
+                        <strong>12/10/2025 - 11:06</strong>
+                        <span>Tổng tiền</span>
+                        <strong>898.000 đ <small>(2 sản phẩm)</small></strong>
+                    </div>
+                    <div class="card-footer">
+                        <span class="status-tag status-processing">Đang xử lý</span>
+                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
+                    </div>
+                </div>
+                <!-- Order Card 4 -->
+                <div class="order-card">
+                    <div class="card-details">
+                        <span>Mã đơn hàng</span>
+                        <div class="order-id"><strong>CNF1000108578</strong><span class="placeholder-icon"></span></div>
+                        <span>Ngày đặt hàng</span>
+                        <strong>12/10/2025 - 11:02</strong>
+                        <span>Tổng tiền</span>
+                        <strong>898.000 đ <small>(2 sản phẩm)</small></strong>
+                    </div>
+                    <div class="card-footer">
+                        <span class="status-tag status-pending">Chờ thanh toán</span>
+                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
+                    </div>
+                </div>
+                <!-- Order Card 5 -->
+                <div class="order-card">
+                    <div class="card-details">
+                        <span>Mã đơn hàng</span>
+                        <div class="order-id"><strong>CNF1000108577</strong><span class="placeholder-icon"></span></div>
+                        <span>Ngày đặt hàng</span>
+                        <strong>12/10/2025 - 10:38</strong>
+                        <span>Tổng tiền</span>
+                        <strong>898.000 đ <small>(2 sản phẩm)</small></strong>
+                    </div>
+                    <div class="card-footer">
+                        <span class="status-tag status-pending">Chờ thanh toán</span>
+                        <a href="../html/order_code.html" class="details-link">Chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- === JAVASCRIPT === -->
+    <!-- ĐÃ SỬA: Liên kết đến file JS ngoài theo đúng cấu trúc -->
+    <script src="../js/order.js"></script>
+
+</body>
+</html>

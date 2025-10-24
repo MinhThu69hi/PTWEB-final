@@ -1,0 +1,396 @@
+:root {
+    --primary-color: #d8232a;
+    --secondary-color: #3b82f6;
+    --text-color: #333;
+    --border-color: #e5e7eb;
+    --background-color: #f8f8f9;
+    --input-bg-color: #eef5ff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* --- Header --- */
+.site-header {
+    background-color: #fff;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.logo {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+}
+.progress-steps ol {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.progress-steps li {
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-weight: 500;
+    position: relative;
+    padding-right: 25px;
+}
+.progress-steps li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 1px;
+    background-color: #ccc;
+}
+.progress-steps li span {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    background-color: #fff;
+    color: #999;
+}
+.progress-steps li.completed span, .progress-steps li.active span {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+}
+.progress-steps li.active {
+    color: var(--secondary-color);
+}
+.continue-shopping {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* --- Main Layout --- */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+.page-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.checkout-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: flex-start;
+}
+.card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.card:last-child {
+    margin-bottom: 0;
+}
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* --- Form Styles (Left Column) --- */
+.form-group {
+    margin-bottom: 16px;
+}
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg-color);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--secondary-color);
+}
+.address-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.free-shipping-note {
+    color: #28a745;
+    margin-bottom: 16px;
+}
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.option-group [type="radio"] {
+    display: none;
+}
+.shipping-option, .payment-option {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.shipping-option.selected, .payment-option.selected {
+    border: 2px solid var(--primary-color);
+    padding: 15px;
+}
+.option-content {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+.option-details {
+    flex-grow: 1;
+}
+.shipping-banner {
+    width: 100%;
+    max-width: 240px;
+    margin-bottom: 8px;
+}
+.option-title {
+    font-weight: 700;
+}
+.option-desc {
+    color: #666;
+    margin: 4px 0 8px;
+    font-size: 13px;
+}
+.carrier-logo,
+.carrier-logo-group img {
+    height: 22px;
+    width: auto;
+}
+.carrier-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+.option-price {
+    font-weight: 700;
+}
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.payment-icon {
+    height: 30px;
+}
+.payment-methods-logo {
+    margin-top: 4px;
+}
+.payment-methods-logo img {
+    height: 20px;
+}
+
+/* --- Order Summary (Right Column) --- */
+.order-summary .card {
+    padding: 24px;
+}
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.summary-label-bold {
+    font-weight: 700;
+}
+.promo-code a {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.applied-voucher {
+    background-color: #e9f5e9;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 16px;
+}
+.applied-voucher p {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+}
+.applied-voucher .voucher-title {
+    font-weight: 700;
+    font-size: 14px;
+}
+.applied-voucher .voucher-desc {
+    margin: 4px 0;
+}
+.applied-voucher .voucher-code {
+    font-weight: 700;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.summary-subtext {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    font-weight: 400;
+    margin-top: 2px;
+}
+.discount-price {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 16px 0;
+}
+.khtt-box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: #e0e0e0;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+.total-row {
+    align-items: flex-start;
+}
+.total-label {
+    font-size: 16px;
+}
+.vat-note {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    font-weight: 400;
+}
+.total-price {
+    text-align: right;
+}
+.final-price {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-color);
+    display: block;
+}
+.savings-price {
+    display: block;
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.checkout-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid #b81d22;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+}
+.checkout-button:hover {
+    background-color: #c21e24;
+}
+/* --- CSS CHO DANH SÁCH SẢN PHẨM --- */
+#product-list-summary {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 10px;
+}
+
+.summary-product-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.summary-product-item:last-child {
+    margin-bottom: 0;
+}
+
+.summary-product-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+.summary-product-details {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-product-name {
+    font-weight: 500;
+}
+
+.summary-product-quantity {
+    color: #888;
+    margin-top: 4px;
+}
+
+.summary-product-price {
+    font-weight: 500;
+    text-align: right;
+}
+
+/* --- CSS BỔ SUNG ĐỂ ẨN/HIỆN VOUCHER --- */
+#applied-voucher-box {
+    display: none; /* Mặc định ẩn */
+}
+#summary-discount-row {
+    display: none; /* Mặc định ẩn dòng giảm giá */
+}

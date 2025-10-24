@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán VNPAY</title>
+    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <link rel="stylesheet" href="../css/VNpay_order_infor.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page-container">
+        <header class="site-header">
+            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
+            <a href="../../basket/index.html" class="logo">CANIFA</a>
+            <!-- ĐÃ SỬA: Liên kết "Quay lại" về trang thông tin đơn hàng -->
+            <a href="../../Ordering/order/html/order_information.html" class="back-link">QUAY LẠI &#8634;</a>
+        </header>
+
+        <main class="main-content">
+            <div class="payment-box">
+                <h2>Thanh toán qua cổng VNPAY</h2>
+                <div class="section-title">
+                    <h3>THÔNG TIN ĐƠN HÀNG</h3>
+                </div>
+                
+                <div class="order-details">
+                    <div class="detail-row">
+                        <span class="label">Mã đơn hàng</span>
+                        <div class="value-with-action">
+                            <!-- ĐÃ THÊM ID để JS cập nhật -->
+                            <span class="value" id="order-id">Đang tải...</span>
+                            <a href="#" class="action-link copy-link">Copy</a>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Người nhận</span>
+                        <span class="value">T**************</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Địa chỉ</span>
+                        <span class="value">***,***,***,Hà Nội</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Thanh toán</span>
+                        <span class="value">Thẻ ATM/Visa/Master/JCB/QR Pay qua cổng VNPAY</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Tổng tiền</span>
+                        <!-- ĐÃ THÊM ID để JS cập nhật -->
+                        <span class="value price" id="order-total">0 đ</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Sản phẩm</span>
+                        <div class="value-with-action">
+                             <!-- ĐÃ THÊM ID để JS cập nhật -->
+                            <span class="value" id="product-count">(0)</span>
+                            <!-- ĐÃ SỬA: Liên kết đến trang chi tiết đơn hàng -->
+                            <a href="../../Ordering/order/html/order_code.html" class="action-link">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="payment-button">THANH TOÁN</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC CẬP NHẬT HOÀN TOÀN === -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Đọc dữ liệu từ sessionStorage
+            const cartDataString = sessionStorage.getItem('cartData');
+            if (!cartDataString) {
+                alert('Không tìm thấy thông tin giỏ hàng! Vui lòng thử lại.');
+                window.location.href = '../../Ordering/order/html/order_information.html'; // Quay lại trang trước
+                return;
+            }
+            const cartData = JSON.parse(cartDataString);
+
+            // 2. Lấy các element cần cập nhật
+            const orderIdEl = document.getElementById('order-id');
+            const orderTotalEl = document.getElementById('order-total');
+            const productCountEl = document.getElementById('product-count');
+
+            // 3. Cập nhật giao diện với dữ liệu động
+            orderTotalEl.innerText = cartData.total.toLocaleString('vi-VN') + ' đ';
+            productCountEl.innerText = `(${cartData.products.reduce((acc, p) => acc + p.quantity, 0)})`;
+            
+            // Tạo một mã đơn hàng giả lập để hiển thị
+            const randomOrderId = 'CNF' + Math.floor(1000000000 + Math.random() * 9000000000);
+            orderIdEl.innerText = randomOrderId;
+
+            // 4. Gắn sự kiện cho các nút bấm
+            const copyLink = document.querySelector('.copy-link');
+            if (copyLink) {
+                copyLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    navigator.clipboard.writeText(randomOrderId).then(() => {
+                        this.innerText = 'Đã copy!';
+                        setTimeout(() => { this.innerText = 'Copy'; }, 2000);
+                    }).catch(err => console.error("Không thể sao chép:", err));
+                });
+            }
+
+            const paymentButton = document.querySelector('.payment-button');
+            if (paymentButton) {
+                paymentButton.addEventListener('click', () => {
+                    // Chuyển đến trang thanh toán VNPAY thực tế
+                    window.location.href = 'VNpay_payment.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

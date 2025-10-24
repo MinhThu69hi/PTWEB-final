@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hủy hàng không thành công</title>
+    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <link rel="stylesheet" href="../css/cancellation_failed.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page-container">
+        <header class="site-header">
+            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
+            <a href="../../basket/index.html" class="logo">CANIFA</a>
+        </header>
+
+        <main class="main-content">
+            <div class="status-box">
+                <div class="status-header">
+                    <div class="failure-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle cx="26" cy="26" r="25" fill="#D8232A"/>
+                            <path stroke-width="4" stroke="#FFF" stroke-linecap="round" d="M16 16 36 36 M36 16 16 36"/>
+                        </svg>
+                    </div>
+                    <h2>Hủy hàng không thành công</h2>
+                    <p>Đơn hàng đã được vận chuyển - Vui lòng liên hệ shop để được tư vấn</p>
+                </div>
+
+                <div class="order-summary">
+                    <div class="section-title">
+                        <h3>THÔNG TIN ĐƠN HÀNG</h3>
+                    </div>
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <span class="label">Mã đơn hàng</span>
+                            <div class="value-with-action">
+                                <span class="value">CNF1000108580</span>
+                                <a href="#" class="action-link copy-link">Copy</a>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Người nhận</span>
+                            <span class="value">T**************</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Địa chỉ</span>
+                            <span class="value">***,***,***,Hà Nội</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Thanh toán</span>
+                            <span class="value">Thẻ ATM/Visa/Master/JCB/QR Pay qua cổng VNPAY</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Tổng tiền</span>
+                            <span class="value price">1.248.000 đ</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Sản phẩm</span>
+                            <div class="value-with-action">
+                                <span class="value">(2)</span>
+                                <!-- ĐÃ SỬA: Liên kết đến trang chi tiết đơn hàng -->
+                                <a href="../../order/html/order_code.html" class="action-link">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="home-button">VỀ TRANG CHỦ</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- === JAVASCRIPT === -->
+    <!-- ĐÃ SỬA: Liên kết đến file JS ngoài -->
+    <script src="../js/cancellation_failed.js"></script>
+    <!-- Script nhỏ để đảm bảo nút "Về trang chủ" trỏ đến trang quản lý đơn hàng -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.querySelector('.home-button');
+            if (homeButton) {
+                homeButton.addEventListener('click', function() {
+                    // ĐÃ SỬA: Điều hướng về trang danh sách đơn hàng
+                    window.location.href = '../../order/html/order.html';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

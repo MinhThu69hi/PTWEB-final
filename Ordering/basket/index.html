@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - CANIFA</title>
+    <!-- Đường dẫn đến file CSS trong cùng thư mục -->
+    <link rel="stylesheet" href="../basket/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS cho các nút chức năng mới đã được thêm sẵn, bạn không cần làm gì */
+        .item-actions { display: flex; align-items: center; gap: 10px; }
+        .quantity-controls { display: flex; align-items: center; border: 1px solid #dee2e6; border-radius: 4px; }
+        .quantity-btn { background-color: transparent; border: none; color: #495057; cursor: pointer; font-size: 16px; font-weight: 700; width: 30px; height: 30px; }
+        .quantity-btn:hover { background-color: #f8f9fa; }
+        .quantity { font-weight: 500; padding: 0 5px; min-width: 30px; text-align: center; }
+        .delete-btn { background-color: transparent; border: none; color: #dc3545; cursor: pointer; font-size: 13px; font-weight: 500; margin-left: 10px; }
+        .delete-btn:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">CANIFA</a>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Cửa hàng</a></li>
+                    <!-- ĐÃ SỬA: Liên kết đến trang quản lý đơn hàng -->
+                    <li><a href="../order/html/order.html">Tài khoản</a></li>
+                    <li>
+                        <a href="../basket/index.html" class="cart-link">
+                            Giỏ hàng
+                            <span class="cart-notification">2</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="cart-panel">
+            <div class="cart-section cart-header">
+                <h3>Giỏ hàng (2)</h3>
+            </div>
+
+            <div class="cart-section select-all-section">
+                <div class="select-all-control">
+                    <div class="custom-checkbox checked" id="select-all-checkbox"></div>
+                    <span>Chọn tất cả</span>
+                </div>
+                <span class="selection-info">Bạn đã chọn 2 sản phẩm</span>
+            </div>
+
+            <!-- Sản phẩm 1 -->
+            <div class="cart-section cart-item">
+                <div class="custom-checkbox checked"></div>
+                <!-- Đường dẫn ảnh đã được sửa -->
+                <img src="../../images/products/menu khách lẻ/ít calo/L4.png" alt="Sản phẩm ít calo" class="product-image">
+                <div class="item-details">
+                    <p class="item-name">Ức gà khoai tây</p>
+                    <p class="item-price" data-price="599000">599.000 đ</p>
+                </div>
+                <!-- ĐÃ THAY ĐỔI: Thêm các nút chức năng -->
+                <div class="item-actions">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn minus-btn">-</button>
+                        <span class="quantity">1</span>
+                        <button class="quantity-btn plus-btn">+</button>
+                    </div>
+                    <button class="delete-btn">Xóa</button>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 2 (để kiểm tra chức năng) -->
+            <div class="cart-section cart-item">
+                <div class="custom-checkbox checked"></div>
+                <img src="../../images/products/menu khách lẻ/ít calo/L1.png" alt="Sản phẩm khác" class="product-image">
+                <div class="item-details">
+                    <p class="item-name">Salad Trái Cây</p>
+                    <p class="item-price" data-price="249000">249.000 đ</p>
+                </div>
+                <div class="item-actions">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn minus-btn">-</button>
+                        <span class="quantity">2</span>
+                        <button class="quantity-btn plus-btn">+</button>
+                    </div>
+                    <button class="delete-btn">Xóa</button>
+                </div>
+            </div>
+            
+            <div class="cart-section promo-section">
+                <span>Mã ưu đãi</span>
+                <!-- ĐÃ SỬA: Liên kết đến trang mã giảm giá -->
+                <a href="../../Payment/html/coupon_code.html" class="promo-link">Chọn hoặc nhập mã</a>
+            </div>
+
+            <div class="summary-section">
+                <div class="subtotal">
+                    <span>Tạm tính</span>
+                    <span class="subtotal-price">1.097.000 đ</span>
+                </div>
+                <button class="checkout-button">THANH TOÁN</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC NÂNG CẤP HOÀN TOÀN === -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartPanel = document.querySelector('.cart-panel');
+            const selectAllCheckbox = document.getElementById('select-all-checkbox');
+            
+            function updateCart() {
+                const allItems = document.querySelectorAll('.cart-item');
+                const selectionInfo = document.querySelector('.selection-info');
+                const subtotalPriceElement = document.querySelector('.subtotal-price');
+                const cartHeader = document.querySelector('.cart-header h3');
+                const cartNotification = document.querySelector('.cart-notification');
+
+                let selectedCount = 0;
+                let subtotal = 0;
+                let totalItemsInCart = allItems.length;
+
+                allItems.forEach(item => {
+                    const checkbox = item.querySelector('.custom-checkbox');
+                    const price = parseInt(item.querySelector('.item-price').dataset.price);
+                    const quantity = parseInt(item.querySelector('.quantity').innerText);
+
+                    if (checkbox.classList.contains('checked')) {
+                        selectedCount++;
+                        subtotal += price * quantity;
+                    }
+                });
+
+                // Cập nhật giao diện
+                if(selectionInfo) selectionInfo.innerText = `Bạn đã chọn ${selectedCount} sản phẩm`;
+                if(subtotalPriceElement) subtotalPriceElement.innerText = subtotal.toLocaleString('vi-VN') + ' đ';
+                if(cartHeader) cartHeader.innerText = `Giỏ hàng (${totalItemsInCart})`;
+                if(cartNotification) cartNotification.innerText = totalItemsInCart;
+                
+                if (selectAllCheckbox) {
+                    if (totalItemsInCart > 0 && selectedCount === totalItemsInCart) {
+                        selectAllCheckbox.classList.add('checked');
+                    } else {
+                        selectAllCheckbox.classList.remove('checked');
+                    }
+                }
+                
+                // Hiển thị thông báo khi giỏ hàng trống
+                if (totalItemsInCart === 0 && cartPanel) {
+                     cartPanel.innerHTML = `
+                        <div style="text-align: center; padding: 50px 20px;">
+                            <h3>Giỏ hàng của bạn đang trống</h3>
+                            <p style="margin: 15px 0; color: #666;">Hãy quay lại và chọn cho mình sản phẩm ưng ý nhé!</p>
+                            <a href="index.html" style="display: inline-block; background-color: #d8232a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Tiếp tục mua sắm</a>
+                        </div>
+                    `;
+                }
+            }
+
+            // Sử dụng Event Delegation để xử lý tất cả các click
+            if(cartPanel) {
+                cartPanel.addEventListener('click', function(e) {
+                    const target = e.target;
+                    
+                    if (target.matches('.custom-checkbox:not(#select-all-checkbox)')) {
+                        target.classList.toggle('checked');
+                        updateCart();
+                    }
+
+                    if (target.matches('.plus-btn')) {
+                        const quantityEl = target.previousElementSibling;
+                        let quantity = parseInt(quantityEl.innerText);
+                        quantityEl.innerText = quantity + 1;
+                        updateCart();
+                    }
+
+                    if (target.matches('.minus-btn')) {
+                        const quantityEl = target.nextElementSibling;
+                        let quantity = parseInt(quantityEl.innerText);
+                        if (quantity > 1) {
+                            quantityEl.innerText = quantity - 1;
+                            updateCart();
+                        }
+                    }
+
+                    if (target.matches('.delete-btn')) {
+                        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+                            target.closest('.cart-item').remove();
+                            updateCart();
+                        }
+                    }
+                });
+            }
+
+            // Sự kiện cho nút "Chọn tất cả"
+            if(selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('click', function() {
+                    const isChecked = this.classList.toggle('checked');
+                    const itemCheckboxes = document.querySelectorAll('.cart-item .custom-checkbox');
+                    itemCheckboxes.forEach(checkbox => {
+                        isChecked ? checkbox.classList.add('checked') : checkbox.classList.remove('checked');
+                    });
+                    updateCart();
+                });
+            }
+
+            // Sự kiện cho nút "Thanh toán"
+            const checkoutButton = document.querySelector('.checkout-button');
+            if (checkoutButton) {
+                checkoutButton.addEventListener('click', function() {
+                    const selectedItems = document.querySelectorAll('.cart-item .custom-checkbox.checked');
+                    if (selectedItems.length === 0) {
+                        alert('Vui lòng chọn ít nhất một sản phẩm để thanh toán!');
+                        return;
+                    }
+
+                    const productsToCheckout = [];
+                    let finalSubtotal = 0;
+
+                    selectedItems.forEach(checkbox => {
+                        const itemElement = checkbox.closest('.cart-item');
+                        const product = {
+                            name: itemElement.querySelector('.item-name').innerText,
+                            price: parseInt(itemElement.querySelector('.item-price').dataset.price),
+                            quantity: parseInt(itemElement.querySelector('.quantity').innerText),
+                            imgSrc: itemElement.querySelector('.product-image').getAttribute('src')
+                        };
+                        productsToCheckout.push(product);
+                        finalSubtotal += product.price * product.quantity;
+                    });
+
+                    const cartData = {
+                        products: productsToCheckout,
+                        subtotal: finalSubtotal,
+                        shipping: 0, 
+                        total: finalSubtotal 
+                    };
+
+                    sessionStorage.setItem('cartData', JSON.stringify(cartData));
+                    window.location.href = '../../Payment/html/order_information.html';
+                });
+            }
+
+            // Chạy lần đầu
+            updateCart();
+        });
+    </script>
+</body>
+</html>

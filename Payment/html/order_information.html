@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - CANIFA</title> 
+    <link rel="stylesheet" href="../css/order_information.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="../../Ordering/basket/index.html" class="logo">CANIFA</a>
+        <nav class="progress-steps">
+            <ol>
+                <li class="completed"><span>1</span>Giỏ hàng</li>
+                <li class="active"><span>2</span>Thanh toán</li>
+                <li><span>3</span>Hoàn tất</li>
+            </ol>
+        </nav>
+        <a href="../../Ordering/basket/index.html" class="continue-shopping">TIẾP TỤC MUA SẮM &#8634;</a>
+    </header>
+
+    <main>
+        <div class="page-title">Thông tin đơn hàng</div>
+        <div class="checkout-container">
+            <div class="checkout-form">
+                <form>
+                    <div class="card">
+                        <h3>Thông tin giao hàng</h3>
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" placeholder="Nhập họ tên">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" placeholder="Nhập số điện thoại nhận hàng">
+                        </div>
+                        <div class="address-grid">
+                            <div class="form-group">
+                                <label for="city">Tỉnh / Thành phố</label>
+                                <select id="city"><option>Hà Nội</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">Quận / Huyện</label>
+                                <select id="district"><option>Quận Ba Đình</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ward">Phường / Xã</label>
+                                <select id="ward"><option>Phường Phúc Xá</option></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ chi tiết</label>
+                            <input type="text" id="address" placeholder="Nhập chi tiết địa chỉ">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Phương thức vận chuyển</h3>
+                        <p class="free-shipping-note">Đơn hàng được miễn phí vận chuyển</p>
+                        <div class="option-group">
+                            <label class="shipping-option selected" data-price="0">
+                                <input type="radio" name="shipping" value="fast" checked>
+                                <div class="option-content">
+                                    <img src="../../images/payment/2-4h.jpg" alt="Experience Now Banner" class="shipping-banner">
+                                    <div class="option-details">
+                                        <p class="option-title">Siêu tốc 2-4h</p>
+                                        <p class="option-desc">Đơn hàng có thể giao nhanh trong 2 - 4h.</p>
+                                        <img src="../../images/payment/AhaMove.jpg" alt="AhaMove" class="carrier-logo">
+                                    </div>
+                                    <span class="option-price">0 đ</span>
+                                </div>
+                            </label>
+                             <label class="shipping-option" data-price="25000">
+                                <input type="radio" name="shipping" value="standard">
+                                <div class="option-content">
+                                    <div class="option-details">
+                                        <p class="option-title">Tiêu chuẩn 2-5 ngày</p>
+                                        <p class="option-desc">Thời gian giao hàng tùy thuộc vào đơn vị vận chuyển.</p>
+                                        <div class="carrier-logo-group">
+                                            <img src="../../images/payment/ShopeeXpress.jpg" alt="ShopeeXpress">
+                                            <img src="../../images/payment/giaohangnhanh.jpg" alt="Giao Hàng Nhanh">
+                                        </div>
+                                    </div>
+                                    <span class="option-price">25.000 đ</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Phương thức thanh toán</h3>
+                        <div class="option-group">
+                            <label class="payment-option selected">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <img src="../../images/payment/TM.jpg" alt="COD icon" class="payment-icon">
+                                <span>Thanh toán khi nhận hàng (COD)</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="vnpay">
+                                <img src="../../images/payment/VNpay.jpg" alt="VNPAY icon" class="payment-icon">
+                                <div>
+                                    <span>Cổng thanh toán VNPAY</span>
+                                    <div class="payment-methods-logo">
+                                        <img src="../../images/payment/Bank.jpg" alt="Payment methods">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <aside class="order-summary">
+                <div class="card">
+                    <div class="summary-row promo-code">
+                        <span>Mã ưu đãi</span>
+                        <a href="coupon_code.html">Chọn hoặc nhập mã</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Chi tiết đơn hàng</h3>
+
+                    <!-- ĐÃ THÊM: Khu vực hiển thị sản phẩm động -->
+                    <div id="product-list-summary">
+                        <!-- Sản phẩm từ giỏ hàng sẽ được JS chèn vào đây -->
+                    </div>
+                    <hr>
+
+                    <div class="summary-row">
+                        <span>Giá trị đơn hàng</span>
+                        <span id="summary-subtotal">0 đ</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Phí vận chuyển</span>
+                        <span id="summary-shipping">0 đ</span>
+                    </div>
+                    <hr>
+                    <div class="summary-row total-row">
+                        <div>
+                            <span class="total-label">Tổng tiền thanh toán</span>
+                            <span class="vat-note">(Đã bao gồm thuế VAT)</span>
+                        </div>
+                        <div class="total-price">
+                            <span id="summary-total">0 đ</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="checkout-button">THANH TOÁN</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC CẬP NHẬT HOÀN TOÀN === -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Đọc và hiển thị dữ liệu từ Giỏ hàng ---
+            const cartDataString = sessionStorage.getItem('cartData');
+            if (!cartDataString) {
+                alert('Giỏ hàng trống! Đang quay về trang chọn sản phẩm.');
+                window.location.href = '../../Ordering/basket/index.html';
+                return;
+            }
+            const cartData = JSON.parse(cartDataString);
+
+            const productListEl = document.getElementById('product-list-summary');
+            const subtotalEl = document.getElementById('summary-subtotal');
+            const shippingEl = document.getElementById('summary-shipping');
+            const totalEl = document.getElementById('summary-total');
+
+            // Hàm để render lại toàn bộ giá trị
+            function renderSummary() {
+                // Hiển thị danh sách sản phẩm
+                let productsHTML = '';
+                cartData.products.forEach(p => {
+                    productsHTML += `
+                        <div class="summary-product-item">
+                            <img src="${p.imgSrc}" alt="${p.name}" class="summary-product-image">
+                            <div class="summary-product-details">
+                                <div>
+                                    <p class="summary-product-name">${p.name}</p>
+                                    <p class="summary-product-quantity">Số lượng: ${p.quantity}</p>
+                                </div>
+                                <p class="summary-product-price">${(p.price * p.quantity).toLocaleString('vi-VN')} đ</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                productListEl.innerHTML = productsHTML;
+
+                // Cập nhật giá trị
+                cartData.total = cartData.subtotal + cartData.shipping;
+                subtotalEl.innerText = cartData.subtotal.toLocaleString('vi-VN') + ' đ';
+                shippingEl.innerText = cartData.shipping.toLocaleString('vi-VN') + ' đ';
+                totalEl.innerText = cartData.total.toLocaleString('vi-VN') + ' đ';
+                
+                // Cập nhật lại sessionStorage mỗi khi có thay đổi
+                sessionStorage.setItem('cartData', JSON.stringify(cartData));
+            }
+
+            // --- 2. Xử lý các lựa chọn của người dùng ---
+            function handleOptionSelection(optionSelector) {
+                const options = document.querySelectorAll(optionSelector);
+                options.forEach(option => {
+                    option.addEventListener('click', function() {
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        this.classList.add('selected');
+                        this.querySelector('input[type="radio"]').checked = true;
+
+                        // Nếu là lựa chọn vận chuyển, cập nhật lại giá
+                        if (this.classList.contains('shipping-option')) {
+                            cartData.shipping = parseInt(this.dataset.price) || 0;
+                            renderSummary();
+                        }
+                    });
+                });
+            }
+
+            handleOptionSelection('.shipping-option');
+            handleOptionSelection('.payment-option');
+
+            // --- 3. Xử lý nút thanh toán ---
+            const checkoutButton = document.querySelector('.checkout-button');
+            if (checkoutButton) {
+                checkoutButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const selectedPayment = document.querySelector('.payment-option.selected input[type="radio"]');
+                    if (selectedPayment && selectedPayment.value === 'vnpay') {
+                        window.location.href = 'VNpay_order_infor.html';
+                    } else {
+                        window.location.href = '../../Ordering/order/html/Order_successful.html'; 
+                    }
+                });
+            }
+            
+            // --- 4. Chạy render lần đầu ---
+            renderSummary();
+        });
+    </script>
+</body>
+</html>

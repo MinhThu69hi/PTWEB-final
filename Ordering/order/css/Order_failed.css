@@ -1,0 +1,180 @@
+/* --- Global Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Header & Navigation --- */
+.page-header {
+    padding: 30px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #888;
+}
+
+.site-nav {
+    background-color: #fff;
+    padding: 15px 30px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+    background-color: #d8232a;
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* --- Main Content --- */
+.main-content {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.status-box {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* --- Status Header --- */
+.status-header {
+    margin-bottom: 30px;
+}
+
+.failure-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+}
+
+.status-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.status-header p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* --- Order Summary --- */
+.order-summary {
+    margin-bottom: 30px;
+}
+.section-title {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 24px;
+}
+
+.section-title h3 {
+    font-size: 14px;
+    color: #555;
+    padding-bottom: 12px;
+    display: inline-block;
+    border-bottom: 2px solid #333;
+}
+
+.order-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px 24px;
+    text-align: left;
+}
+
+.detail-row {
+    grid-column: 1 / -1;
+    display: contents;
+}
+
+.label {
+    color: #888;
+    font-size: 14px;
+}
+
+.value {
+    font-weight: 500;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.value.price {
+    font-weight: 700;
+}
+
+.value-with-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-link {
+    font-size: 13px;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.copy-link {
+    font-size: 12px;
+    color: #888;
+}
+
+/* --- Actions --- */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.change-method-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.retry-button {
+    width: 100%;
+    background-color: #d8232a;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+}
+
+.retry-button:hover {
+    background-color: #c21e24;
+}

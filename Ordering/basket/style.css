@@ -1,0 +1,273 @@
+/* --- Global Styles & Fonts --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #d9dbde; /* Light grey background from image */
+    color: #333;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header --- */
+.site-header {
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    background-color: #d8232a; /* Red from image */
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0 40px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: #555;
+}
+
+.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cart-notification {
+    background-color: #d8232a;
+    color: #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -8px;
+    right: -15px;
+}
+
+/* --- Main Content --- */
+.main-content {
+    padding: 40px;
+    display: flex;
+    justify-content: flex-end; /* Align cart panel to the right */
+}
+
+/* --- Cart Panel --- */
+.cart-panel {
+    background-color: #fff;
+    width: 100%;
+    max-width: 580px; /* Estimated width */
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.cart-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.promo-section {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.cart-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.select-all-section .selection-info {
+    font-size: 12px;
+    color: #888;
+}
+
+/* --- Cart Item --- */
+.cart-item {
+    gap: 15px;
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.item-price {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.action-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+}
+
+/* --- Custom Checkboxes/Radios --- */
+.custom-radio {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Unselected state */
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: #dcdcdc;
+    border: 1px solid #dcdcdc;
+}
+
+/* --- Promo & Summary --- */
+.promo-section .promo-link {
+    font-weight: 500;
+    color: #555;
+}
+
+.summary-section {
+    padding-top: 20px;
+}
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.subtotal-price {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.checkout-button {
+    background-color: #d8232a;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+}
+
+.checkout-button:hover {
+    background-color: #c21e24;
+}
+/* --- Custom Checkboxes/Radios --- */
+.custom-radio {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Unselected state */
+    cursor: pointer; /* Thêm con trỏ chuột */
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: #fff; /* Nền trắng khi chưa chọn */
+    border: 1px solid #dcdcdc;
+    cursor: pointer; /* Thêm con trỏ chuột */
+    transition: background-color 0.2s, border-color 0.2s; /* Hiệu ứng chuyển mượt */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Thêm đoạn này để xử lý trạng thái checked */
+.custom-checkbox.checked {
+    background-color: #d8232a; /* Màu đỏ khi được chọn */
+    border-color: #d8232a;
+}
+
+/* Thêm icon dấu tick (sử dụng SVG) vào trong checkbox khi được chọn */
+.custom-checkbox.checked::after {
+    content: ' ';
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Căn chỉnh lại cho phần select-all */
+.select-all-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán VNPAY</title>
+    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <link rel="stylesheet" href="../css/VNpay_payment.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="payment-container">
+        <header class="payment-header">
+            <!-- Nút Back sẽ được xử lý bởi JS -->
+            <a href="#" class="back-btn">‹</a>
+            <!-- ĐÃ SỬA: Đường dẫn hình ảnh -->
+            <img src="../../images/payment/VNpay.jpg" alt="VNPAY Logo" class="vnpay-logo">
+            <div class="timer">
+                <span>Remaining time</span>
+                <span class="time-box">08</span>:<span class="time-box">20</span>
+            </div>
+            <button class="close-btn">×</button>
+        </header>
+
+        <main class="payment-body">
+            <div class="warning-banner">
+                <span class="warning-icon">⚠</span>
+                <p>Please do not close the web browser until receiving the ultimate result on the website. If you have paid but have not received the transaction results, please preserve the results. Thank you!</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="order-info">
+                    <h3>Order information</h3>
+                    <div class="info-box">
+                        <div class="info-row">
+                            <span class="label">Payment amount</span>
+                            <!-- ĐÃ THÊM ID để JS cập nhật -->
+                            <span class="amount" id="payment-amount">0<sup>VND</sup></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Order amount</span>
+                             <!-- ĐÃ THÊM ID để JS cập nhật -->
+                            <span class="value" id="order-amount">0<sup>VND</sup></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Transaction fee</span>
+                            <span class="value">0<sup>VND</sup></span>
+                        </div>
+                        <hr>
+                        <div class="info-row">
+                            <span class="label">Order ID</span>
+                            <span class="value" id="order-id">Đang tải...</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Provider</span>
+                            <span class="value">CÔNG TY CP CANIFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qr-code-section">
+                    <h3>Scan QR code via Bank/ E-wallet app</h3>
+                    <div class="qr-code-wrapper">
+                        <!-- ĐÃ SỬA: Đường dẫn hình ảnh -->
+                        <img src="../../images/payment/4d411c82-8486-4738-b218-6b0d5484fd88.jpg" alt="QR Code" class="qr-code">
+                        <p>Scan to Pay</p>
+                    </div>
+                    <a href="#" class="cancel-link">Cancel</a>
+                </div>
+            </div>
+
+            <div class="bank-list">
+                <h4>List of banks/ E-wallets with promotion</h4>
+                <!-- ĐÃ SỬA: Đường dẫn hình ảnh -->
+                <img src="../../images/payment/bank1.jpg" alt="Promotion Banks" class="bank-logos">
+                <h4>List of other Banks/ E-wallets supporting payment via VNPAY™</h4>
+                <!-- ĐÃ SỬA: Đường dẫn hình ảnh -->
+                <img src="../../images/payment/bank2.jpg" alt="Other Banks" class="bank-logos">
+            </div>
+        </main>
+        
+        <footer class="payment-footer">
+            <a href="mailto:hotrovnpay@vnpay.vn" class="email-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/></svg>
+                hotrovnpay@vnpay.vn
+            </a>
+            <!-- ĐÃ SỬA: Đường dẫn hình ảnh -->
+            <img src="../../images/payment/secure.jpg" alt="Secure Connection" class="secure-logo">
+        </footer>
+    </div>
+    
+    <footer class="page-footer">
+        Developed by VNPAY © 2025
+    </footer>
+
+    <!-- === JAVASCRIPT ĐÃ ĐƯỢC CẬP NHẬT HOÀN TOÀN === -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Đọc và cập nhật dữ liệu từ sessionStorage ---
+            const cartDataString = sessionStorage.getItem('cartData');
+            if (cartDataString) {
+                const cartData = JSON.parse(cartDataString);
+                // Định dạng số có dấu phẩy ngăn cách hàng nghìn
+                const formattedAmount = cartData.total.toLocaleString('en-US'); 
+                
+                // Cập nhật số tiền
+                document.getElementById('payment-amount').innerHTML = `${formattedAmount}<sup>VND</sup>`;
+                document.getElementById('order-amount').innerHTML = `${formattedAmount}<sup>VND</sup>`;
+                
+                // Cập nhật mã đơn hàng giả lập
+                const randomSuffix = Math.floor(10000 + Math.random() * 90000);
+                document.getElementById('order-id').innerText = `CNF1000108580-${randomSuffix}`;
+            }
+
+            // --- 2. Logic đếm ngược thời gian ---
+            const timeBoxes = document.querySelectorAll('.time-box');
+            const minutesEl = timeBoxes[0];
+            const secondsEl = timeBoxes[1];
+            let durationInSeconds = 8 * 60 + 20;
+
+            const timerInterval = setInterval(() => {
+                if (durationInSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Giao dịch đã hết hạn!');
+                    // Có thể chuyển hướng về trang thất bại tại đây
+                    // window.location.href = '../../order/html/Order_failed.html';
+                    return;
+                }
+                durationInSeconds--;
+                const minutes = Math.floor(durationInSeconds / 60);
+                const seconds = durationInSeconds % 60;
+                minutesEl.innerText = String(minutes).padStart(2, '0');
+                secondsEl.innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+
+            // --- 3. Logic các nút bấm điều hướng ---
+            const cancelButton = document.querySelector('.cancel-link');
+            const closeButton = document.querySelector('.close-btn');
+            const backButton = document.querySelector('.back-btn');
+
+            function redirectToCancelPage(event) {
+                if (event) event.preventDefault();
+                // Chuyển đến trang xác nhận hủy (cùng thư mục)
+                window.location.href = 'cancel_payment.html';
+            }
+
+            if (cancelButton) cancelButton.addEventListener('click', redirectToCancelPage);
+            if (closeButton) closeButton.addEventListener('click', redirectToCancelPage);
+            if (backButton) backButton.addEventListener('click', redirectToCancelPage);
+        });
+    </script>
+</body>
+</html>

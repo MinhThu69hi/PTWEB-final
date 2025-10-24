@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng thành công</title>
+    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <link rel="stylesheet" href="../css/Order_successful.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page-container">
+        <header class="site-header">
+            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
+            <a href="../../basket/index.html" class="logo">CANIFA</a>
+            <nav class="progress-steps">
+                <ol>
+                    <li class="completed"><span>1</span>Giỏ hàng</li>
+                    <li class="completed"><span>2</span>Thanh toán</li>
+                    <li class="active"><span>3</span>Hoàn tất</li>
+                </ol>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="confirmation-box">
+                <div class="status-header">
+                    <div class="success-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle cx="26" cy="26" r="25" fill="#28a745"/>
+                            <path stroke-width="4" stroke="#FFF" stroke-linecap="round" d="M14 27l8 8 16-16"/>
+                        </svg>
+                    </div>
+                    <h2>Đặt hàng thành công</h2>
+                    <p>Cảm ơn bạn đã mua sắm tại Canifa.</p>
+                </div>
+
+                <div class="order-summary">
+                    <div class="section-title">
+                        <h3>THÔNG TIN ĐƠN HÀNG</h3>
+                    </div>
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <span class="label">Mã đơn hàng</span>
+                            <div class="value-with-action">
+                                <span class="value">CNF1000108578</span>
+                                <a href="#" class="action-link copy-link">Copy</a>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Tổng tiền</span>
+                            <span class="value price">898.000 đ <span class="product-count">(2 sản phẩm)</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <a href="#" class="track-order-link">THEO DÕI ĐƠN HÀNG</a>
+                    <button class="home-button">VỀ TRANG CHỦ</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- === JAVASCRIPT === -->
+    <!-- ĐÃ SỬA: Nhúng JS từ file ngoài và cập nhật logic điều hướng -->
+    <script src="../js/order_successful.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trackOrderLink = document.querySelector('.track-order-link');
+            if (trackOrderLink) {
+                // Ghi đè sự kiện để đảm bảo đúng đường dẫn
+                trackOrderLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    // ĐÃ SỬA: Chuyển đến trang danh sách đơn hàng
+                    window.location.href = '../../Ordering/order/html/order.html';
+                });
+            }
+
+            const homeButton = document.querySelector('.home-button');
+            if (homeButton) {
+                // Ghi đè sự kiện để đảm bảo đúng đường dẫn
+                homeButton.addEventListener('click', function() {
+                    // ĐÃ SỬA: Chuyển về trang giỏ hàng
+                    window.location.href = '../../basket/index.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

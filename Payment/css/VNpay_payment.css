@@ -1,0 +1,233 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --vnpay-blue: #005baa;
+    --vnpay-red: #ed1c24;
+    --vnpay-yellow: #fff3cd;
+    --border-color: #dee2e6;
+    --text-muted: #6c757d;
+    --bg-light-grey: #f8f9fa; /* Changed from a darker grey */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-light-grey); /* Updated background color */
+    color: #333;
+    font-size: 14px;
+    padding: 30px 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--vnpay-blue);
+}
+
+.payment-container {
+    background-color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Header --- */
+.payment-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+/* STYLE NÚT BACK ĐÃ THAY ĐỔI */
+.back-btn {
+    background-color: #f1f3f5;
+    border: 1px solid #e0e0e0;
+    color: #333;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.vnpay-logo {
+    height: 32px;
+    margin: 0 auto;
+}
+.timer {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+.time-box {
+    background-color: #333;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin: 0 4px;
+}
+.close-btn {
+    background-color: var(--vnpay-red);
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+/* --- Main Body --- */
+.payment-body {
+    padding: 20px 30px;
+}
+.warning-banner {
+    background-color: var(--vnpay-yellow);
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+.warning-icon {
+    font-size: 18px;
+    color: #856404;
+}
+.warning-banner p {
+    font-size: 13px;
+    color: #856404;
+    line-height: 1.5;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Order Info (Left Column) */
+.order-info h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+.info-box {
+    background-color: #f8f9fa; /* Slightly off-white */
+    padding: 20px;
+    border-radius: 8px;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.info-row:last-child {
+    margin-bottom: 0;
+}
+.label {
+    color: var(--text-muted);
+}
+.value {
+    font-weight: 500;
+}
+.amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--vnpay-blue);
+}
+.amount sup, .value sup {
+    font-size: 0.6em;
+    font-weight: 400;
+}
+.info-box hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 16px 0;
+}
+
+/* QR Code (Right Column) */
+.qr-code-section {
+    text-align: center;
+}
+.qr-code-section h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+.qr-code-wrapper {
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 8px;
+    display: inline-block;
+}
+.qr-code {
+    width: 200px;
+    height: 200px;
+}
+.qr-code-wrapper p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+.cancel-link {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+/* Bank List */
+.bank-list {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+.bank-list h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+.bank-logos {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+/* --- Footer --- */
+.payment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding: 16px 30px;
+}
+.email-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+.email-link svg {
+    fill: var(--text-muted);
+}
+.secure-logo {
+    height: 24px;
+}
+.page-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 12px;
+}

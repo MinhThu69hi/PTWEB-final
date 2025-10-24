@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng không thành công</title>
+    <!-- ĐÃ SỬA: Đường dẫn CSS chính xác -->
+    <link rel="stylesheet" href="../css/Order_failed.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page-container">
+        <nav class="site-nav">
+            <!-- ĐÃ SỬA: Liên kết logo về trang giỏ hàng -->
+            <a href="../../basket/index.html" class="logo">CANIFA</a>
+        </nav>
+
+        <main class="main-content">
+            <div class="status-box">
+                <div class="status-header">
+                    <div class="failure-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle cx="26" cy="26" r="25" fill="#D8232A"/>
+                            <path stroke-width="4" stroke="#FFF" stroke-linecap="round" d="M16 16 36 36 M36 16 16 36"/>
+                        </svg>
+                    </div>
+                    <h2>Đặt hàng không thành công</h2>
+                    <p>Đơn hàng thanh toán thất bại.</p>
+                </div>
+
+                <div class="order-summary">
+                    <div class="section-title">
+                        <h3>THÔNG TIN ĐƠN HÀNG</h3>
+                    </div>
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <span class="label">Mã đơn hàng</span>
+                            <div class="value-with-action">
+                                <span class="value">CNF1000108580</span>
+                                <a href="#" class="action-link copy-link">Copy</a>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Tổng tiền</span>
+                            <span class="value price">1.248.000 đ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <a href="#" class="change-method-link">THAY ĐỔI PHƯƠNG THỨC THANH TOÁN</a>
+                    <button class="retry-button">THANH TOÁN LẠI</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- === JAVASCRIPT === -->
+    <!-- ĐÃ SỬA: Nhúng JS từ file ngoài và cập nhật logic điều hướng -->
+    <script src="../js/Order_failed.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function goToCheckout() {
+                // ĐÃ SỬA: Chuyển về trang thông tin thanh toán để thử lại
+                window.location.href = '../../../Payment/html/order_information.html'; 
+            }
+
+            const retryButton = document.querySelector('.retry-button');
+            if (retryButton) {
+                retryButton.addEventListener('click', goToCheckout);
+            }
+
+            const changeMethodLink = document.querySelector('.change-method-link');
+            if (changeMethodLink) {
+                changeMethodLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    goToCheckout();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

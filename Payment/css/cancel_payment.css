@@ -1,0 +1,102 @@
+/* --- Global Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.content-area {
+    background-color: #f0f2f5;
+    padding: 100px 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Confirmation Modal --- */
+.confirmation-modal {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.modal-message {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* --- Buttons --- */
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    min-width: 120px;
+}
+
+.btn-secondary {
+    background-color: #f0f2f5;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e6ea;
+    border-color: #ccc;
+}
+
+.btn-primary {
+    background-color: #d9534f; /* Red color */
+    color: #fff;
+    border: 1px solid #d43f3a;
+}
+
+.btn-primary:hover {
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
