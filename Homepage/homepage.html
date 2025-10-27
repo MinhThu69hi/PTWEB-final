@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITMEAL - Trang chủ</title>
+
+    <!-- Liên kết đến file CSS của bạn -->
+    <link rel="stylesheet" href="homepage.css">
+
+    <!-- Liên kết đến Google Fonts (Chỉ dùng Montserrat cho phong cách mới) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ======================= Header (Styled theo phong cách mới) ======================= -->
+    <header class="site-header-wrapper">
+        <div class="site-header">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="../images/homepage/H21.png" alt="FITMEAL Logo">
+                </a>
+                <div class="header-search">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <button aria-label="Tìm kiếm"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></button>
+                </div>
+                <div class="header-icons">
+                    <a href="#" aria-label="Tài khoản"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg></a>
+                    <a href="#" aria-label="Giỏ hàng" class="cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                 <!-- Hamburger button will be added here by JS for small screens -->
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#">SẢN PHẨM</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">LIÊN HỆ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ======================= Hero Banner (Slider) ======================= -->
+        <section class="hero-banner slider-component">
+            <div class="slides">
+                <div class="slide">
+                    <img src="../images/homepage/H1.webp" alt="Bữa ăn healthy với rau củ và ngũ cốc">
+                    <div class="hero-content">
+                        <h1>Bữa Ăn Lành Mạnh</h1>
+                        <p>Khám phá thực đơn eat clean đa dạng, được chế biến từ nguyên liệu tươi ngon nhất.</p>
+                        <a href="#" class="cta-button">Xem Thực Đơn</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="../images/homepage/H3.jpeg" alt="Các tô salad đầy màu sắc và dinh dưỡng">
+                    <div class="hero-content">
+                        <h1>Giao Hàng Tận Nơi</h1>
+                        <p>Tiện lợi, nhanh chóng và luôn đảm bảo chất lượng trên từng bữa ăn.</p>
+                        <a href="#" class="cta-button">Đặt Hàng Ngay</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="../images/homepage/H2.avif" alt="Gói ăn tiện lợi với ức gà và bơ">
+                    <div class="hero-content">
+                        <h1>Gói Ăn Tiện Lợi</h1>
+                        <p>Lên kế hoạch bữa ăn cho cả tuần một cách dễ dàng và khoa học.</p>
+                        <a href="#" class="cta-button">Khám Phá Gói Ăn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="prev-slide" aria-label="Previous Slide">&#10094;</button>
+                <button class="next-slide" aria-label="Next Slide">&#10095;</button>
+            </div>
+            <div class="slider-dots"></div>
+        </section>
+
+        <!-- ======================= Services Section ======================= -->
+        <section class="services-section">
+            <div class="container services-grid">
+                <div class="service-item">
+                    <img src="../images/homepage/H22.webp" alt="Free Shipping Icon">
+                    <h4>Miễn phí vận chuyển</h4>
+                    <p>Cho đơn hàng từ 500.000đ</p>
+                </div>
+                <div class="service-item">
+                    <img src="../images/homepage/H23.webp" alt="Gift Icon">
+                    <h4>Quà tặng đặc biệt</h4>
+                    <p>Nhiều ưu đãi hấp dẫn</p>
+                </div>
+                <div class="service-item">
+                    <img src="../images/homepage/H24.png" alt="Quality Icon">
+                    <h4>Chất lượng đảm bảo</h4>
+                    <p>Nguyên liệu 100% tự nhiên</p>
+                </div>
+                <div class="service-item">
+                    <img src="../images/homepage/H25.jpg" alt="Support Icon">
+                    <h4>Hỗ trợ 24/7</h4>
+                    <p>Luôn sẵn sàng phục vụ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Sản phẩm bán chạy ======================= -->
+        <section class="bestsellers">
+            <div class="container">
+                <div class="section-title">
+                    <h2>THỰC ĐƠN BÁN CHẠY</h2>
+                    <p>Những món ăn được yêu thích nhất tại FITMEAL</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image-wrapper"><img src="../images/products/menu khách lẻ/ít calo/L4.png" alt="Salad ức gà"></div>
+                        <div class="product-info">
+                            <h4 class="product-name">Salad Ức Gà Nướng</h4>
+                            <p class="product-price">125.000đ</p>
+                            <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper"><img src="../images/products/menu khách lẻ/ít calo/L7.png" alt="Cơm gạo lứt cá hồi"></div>
+                        <div class="product-info">
+                            <h4 class="product-name">Cơm Gạo Lứt Ức Gà Nướng</h4>
+                            <p class="product-price">155.000đ</p>
+                            <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper"><img src="../images/products/menu khách lẻ/ít calo/L3.png" alt="Bún gạo lứt thịt nướng"></div>
+                        <div class="product-info">
+                            <h4 class="product-name">Mì Gạo Lứt Tôm Nướng Trứng Lòng Đào</h4>
+                            <p class="product-price">130.000đ</p>
+                            <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper"><img src="../images/products/menu khách lẻ/ít calo/L10.png" alt="Bò lúc lắc khoai lang"></div>
+                        <div class="product-info">
+                            <h4 class="product-name">Salad Cá Hồi Bí Đỏ</h4>
+                            <p class="product-price">160.000đ</p>
+                            <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Banner Kêu Gọi Hành Động (Slider với nội dung động) ======================= -->
+        <section class="cta-banner-section slider-component">
+            <div class="slides">
+                <!-- Slide 1: Gói Ăn Giảm Cân -->
+                <div class="slide">
+                    <img src="../images/homepage/H4.jpeg" alt="Thực đơn giảm cân khoa học">
+                    <div class="container cta-banner-content">
+                        <h2>Gói Ăn Giảm Cân</h2>
+                        <p>Thực đơn được thiết kế khoa học bởi chuyên gia dinh dưỡng, giúp bạn đạt mục tiêu vóc dáng hiệu quả.</p>
+                        <a href="#" class="cta-banner-btn">Tìm Hiểu Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Menu Khách Lẻ -->
+                <div class="slide">
+                    <img src="../images/homepage/H6.jpg" alt="Nguyên liệu tươi ngon cho gói giảm cân">
+                     <div class="container cta-banner-content">
+                        <h2 class="english-title">À la carte menu</h2>
+                        <h3>MENU KHÁCH LẺ</h3>
+                        <a href="#" class="cta-banner-btn">Xem Menu</a>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Gói Ăn Tuần -->
+                <div class="slide">
+                    <img src="../images/homepage/H7.jpg" alt="Bữa ăn giảm cân được chuẩn bị sẵn">
+                     <div class="container cta-banner-content">
+                        <h2 class="english-title">Weekly meal plan</h2>
+                        <h3>GÓI ĂN TUẦN</h3>
+                        <a href="#" class="cta-banner-btn">Khám Phá</a>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Gói Ăn Thiết Kế Riêng -->
+                <div class="slide">
+                    <img src="../images/homepage/H8.jpg" alt="Thành phần dinh dưỡng của gói ăn giảm cân">
+                     <div class="container cta-banner-content">
+                        <h2 class="english-title">Personalized Meal Plan</h2>
+                        <h3>GÓI ĂN THIẾT KẾ RIÊNG</h3>
+                        <a href="#" class="cta-banner-btn">Tư Vấn 1:1</a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="slider-dots"></div>
+        </section>
+        <!-- ======================= Brand Story ======================= -->
+        <section class="brand-story">
+            <div class="container story-container">
+                <div class="story-image">
+                    <img src="../images/homepage/H5.webp" alt="Câu chuyện thương hiệu FITMEAL">
+                </div>
+                <div class="story-content">
+                    <h2>Câu chuyện của FITMEAL</h2>
+                    <p>Ra đời từ niềm đam mê mang đến những bữa ăn không chỉ ngon miệng mà còn lành mạnh, FITMEAL là người bạn đồng hành trên hành trình chăm sóc sức khỏe và vóc dáng của bạn.</p>
+                    <a href="#" class="cta-button">Xem thêm</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Instagram Feed ======================= -->
+        <section class="instagram-feed">
+             <div class="container">
+                <div class="section-title">
+                    <h2>THEO DÕI CHÚNG TÔI TRÊN INSTAGRAM</h2>
+                    <p>@fitmeal.vietnam</p>
+                </div>
+                <div class="instagram-grid">
+                    <a href="#" class="instagram-item"><img src="../images/products/menu khách lẻ/đồ uống/J1.jpg" alt="Instagram Post 1"><div class="instagram-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></div></a>
+                    <a href="#" class="instagram-item"><img src="../images/products/menu khách lẻ/đồ uống/J2.jpg" alt="Instagram Post 2"><div class="instagram-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></div></a>
+                    <a href="#" class="instagram-item"><img src="../images/products/menu khách lẻ/đồ uống/J3.jpg" alt="Instagram Post 3"><div class="instagram-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></div></a>
+                    <a href="#" class="instagram-item"><img src="../images/products/menu khách lẻ/đồ uống/J4.jpg" alt="Instagram Post 4"><div class="instagram-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></div></a>
+                    <a href="#" class="instagram-item"><img src="../images/products/menu khách lẻ/đồ uống/J5.jpg" alt="Instagram Post 5"><div class="instagram-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></div></a>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- ======================= Footer ======================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-column about-column">
+                    <a href="#" class="footer-logo">
+                        <img src="../images/homepage/H21.png" alt="FITMEAL Logo">
+                    </a>
+                    <p>FITMEAL cam kết mang đến sản phẩm tươi ngon, đủ chất và an toàn cho sức khỏe.</p>
+                    <p style="font-size: 13px; color: #aaa;">Mã số thuế: 01234567891 – Cấp bởi Sở KH&ĐT TP. Hồ Chí Minh ngày 13/02/2025.</p>
+                    <div class="footer-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg><span>L4 - Tòa B1, 669 Đỗ Mười, Khu phố 13, Phường Linh Xuân, TPHCM.</span></div>
+                    <div class="footer-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/></svg><span>support@fitmeal.com</span></div>
+                    <div class="footer-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/></svg><span>1900.63.60.99</span></div>
+                </div>
+                <div class="footer-column"><h4>Liên hệ</h4><ul><li>Tư vấn dịch vụ: 1900.63.60.99</li><li>Hỗ trợ sử dụng: 1900.63.60.99</li><li>Hỗ trợ vận chuyển: 1900.63.60.99</li><li>Email: support@fitmeal.com</li><li>Từ 7h00 - 22h00 các ngày từ thứ 2 đến Chủ nhật</li></ul></div>
+                <div class="footer-column"><h4>Điều khoản chung</h4><ul><li><a href="#">Chính sách quy định chung</a></li><li><a href="#">Quy định hình thức thanh toán</a></li><li><a href="#">Quy định vận chuyển giao hàng</a></li><li><a href="#">Chính sách bảo mật thông tin</a></li></ul></div>
+                <div class="footer-column"><h4>Danh mục</h4><ul><li><a href="#">Trang chủ</a></li><li><a href="#">Menu khách lẻ</a></li><li><a href="#">Gói ăn tuần</a></li><li><a href="#">Gói ăn thiết kế riêng</a></li><li><a href="#">Blog</a></li></ul></div>
+                <div class="footer-column social-column">
+                    <h4>Liên hệ với chúng tôi</h4>
+                    <p>Luôn cập nhật tất cả các hành động mà chúng tôi đã lưu cho tất cả khách hàng của mình.</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="../images/homepage/H16.jpg" alt="Facebook"></a>
+                        <a href="#"><img src="../images/homepage/H17.jpg" alt="Youtube"></a>
+                        <a href="#"><img src="../images/homepage/H18.jpg" alt="Pinterest"></a>
+                        <a href="#"><img src="../images/homepage/H19.jpg" alt="Tiktok"></a>
+                        <a href="#"><img src="../images/homepage/H20.jpg" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                 <div class="footer-newsletter"><h2>Nhận ưu đãi và thông tin mới nhất!</h2><p>Chúng tôi cam kết bảo mật không lộ thông tin của bạn. Nhận ngay deal hời 5% khi đăng ký tư vấn ngay</p><form class="newsletter-form-fitmeal"><input type="email" placeholder="Nhập địa chỉ email của bạn..." required><button type="submit">Đăng ký nhận tin</button></form></div>
+            </div>
+            <div class="footer-copyright">
+                 <p>&copy; 2024 - Bản quyền thuộc về FITMEAL CO., LTD.</p>
+                 <div class="payment-icons">
+                     <img src="../images/homepage/H11.jpg" alt="Visa">
+                     <img src="../images/homepage/H12.jpg" alt="Mastercard">
+                     <img src="../images/homepage/H13.jpg" alt="Paypal">
+                     <img src="../images/homepage/H14.jpg" alt="American Express">
+                     <img src="../images/homepage/H15.jpg" alt="Bitcoin">
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="homepage.js"></script>
+</body>
+</html>
+
