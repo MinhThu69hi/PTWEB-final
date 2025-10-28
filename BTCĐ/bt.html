@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức VnExpress trong ngày</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .filter-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .filter-container label {
+            font-weight: bold;
+            white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
+        }
+        .filter-container select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            background-color: #fff;
+        }
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-item h2 { margin: 0; font-size: 1.2em; }
+        .news-item h2 a { color: #333; text-decoration: none; transition: color 0.3s; }
+        .news-item h2 a:hover { color: #0056b3; }
+        .news-item div { word-wrap: break-word; } /* Dành cho phần description */
+        .news-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+        .news-item .pub-date {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .loading, .no-news {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tin tức VnExpress mới nhất trong ngày</h1>
+
+        <!-- Thêm bộ lọc chuyên mục vào đây -->
+        <div class="filter-container">
+            <label for="category-selector">Chọn chuyên mục:</label>
+            <select id="category-selector"></select>
+        </div>
+
+        <div id="news-feed">
+            <p class="loading">Đang tải tin tức, vui lòng chờ...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Danh sách các chuyên mục và RSS feed tương ứng
+            // Bạn có thể thêm/bớt/sửa các chuyên mục tại đây
+            const rssFeeds = {
+                'Tin mới nhất': 'https://vnexpress.net/rss/tin-moi-nhat.rss',
+                'Thế giới': 'https://vnexpress.net/rss/the-gioi.rss',
+                'Kinh doanh': 'https://vnexpress.net/rss/kinh-doanh.rss',
+                'Startup': 'https://vnexpress.net/rss/startup.rss',
+                'Giải trí': 'https://vnexpress.net/rss/giai-tri.rss',
+                'Thể thao': 'https://vnexpress.net/rss/the-thao.rss',
+                'Pháp luật': 'https://vnexpress.net/rss/phap-luat.rss',
+                'Giáo dục': 'https://vnexpress.net/rss/giao-duc.rss',
+                'Sức khỏe': 'https://vnexpress.net/rss/suc-khoe.rss',
+                'Đời sống': 'https://vnexpress.net/rss/doi-song.rss',
+                'Du lịch': 'https://vnexpress.net/rss/du-lich.rss',
+                'Khoa học': 'https://vnexpress.net/rss/khoa-hoc.rss',
+                'Số hóa': 'https://vnexpress.net/rss/so-hoa.rss',
+                'Xe': 'https://vnexpress.net/rss/oto-xe-may.rss',
+            };
+
+            const categorySelector = document.getElementById('category-selector');
+            const newsFeedContainer = document.getElementById('news-feed');
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+
+            // --- Hàm để lấy và hiển thị tin tức ---
+            async function fetchAndDisplayNews(rssUrl) {
+                // Hiển thị trạng thái đang tải
+                newsFeedContainer.innerHTML = '<p class="loading">Đang tải tin tức, vui lòng chờ...</p>';
+
+                const fetchUrl = `${proxyUrl}${encodeURIComponent(rssUrl)}`;
+                
+                try {
+                    const response = await fetch(fetchUrl);
+                    if (!response.ok) throw new Error(`Lỗi mạng: ${response.status}`);
+                    
+                    const xmlString = await response.text();
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+                    
+                    const items = xmlDoc.querySelectorAll("item");
+                    const today = new Date();
+                    let newsTodayHtml = '';
+                    let newsCount = 0;
+
+                    items.forEach(item => {
+                        const pubDateString = item.querySelector("pubDate").textContent;
+                        const itemDate = new Date(pubDateString);
+
+                        // Vẫn giữ logic lọc theo ngày
+                        const isToday = itemDate.getDate() === today.getDate() &&
+                                      itemDate.getMonth() === today.getMonth() &&
+                                      itemDate.getFullYear() === today.getFullYear();
+
+                        if (isToday) {
+                            newsCount++;
+                            const title = item.querySelector("title").textContent;
+                            const link = item.querySelector("link").textContent;
+                            const description = item.querySelector("description").textContent;
+                            const formattedDate = itemDate.toLocaleTimeString('vi-VN', { hour: '2-digit', minute:'2-digit' });
+
+                            newsTodayHtml += `
+                                <div class="news-item">
+                                    <h2><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h2>
+                                    <div class="pub-date">Xuất bản lúc: ${formattedDate}</div>
+                                    <div>${description}</div>
+                                </div>`;
+                        }
+                    });
+
+                    if (newsCount > 0) {
+                        newsFeedContainer.innerHTML = newsTodayHtml;
+                    } else {
+                        newsFeedContainer.innerHTML = '<p class="no-news">Không có tin tức nào trong chuyên mục này được đăng hôm nay.</p>';
+                    }
+                } catch (error) {
+                    console.error("Không thể lấy dữ liệu RSS:", error);
+                    newsFeedContainer.innerHTML = '<p class="no-news">Đã xảy ra lỗi khi tải tin tức. Vui lòng thử lại sau.</p>';
+                }
+            }
+
+            // --- Khởi tạo trang ---
+            function initializePage() {
+                // 1. Đổ danh sách chuyên mục vào dropdown
+                for (const categoryName in rssFeeds) {
+                    const option = document.createElement('option');
+                    option.value = rssFeeds[categoryName]; // value là URL
+                    option.textContent = categoryName;      // text là Tên chuyên mục
+                    categorySelector.appendChild(option);
+                }
+
+                // 2. Thêm sự kiện 'change' cho dropdown
+                categorySelector.addEventListener('change', function() {
+                    const selectedRssUrl = this.value; // Lấy URL từ option được chọn
+                    fetchAndDisplayNews(selectedRssUrl);
+                });
+
+                // 3. Tải tin tức của chuyên mục đầu tiên khi trang vừa mở
+                const initialRssUrl = rssFeeds[Object.keys(rssFeeds)[0]];
+                fetchAndDisplayNews(initialRssUrl);
+            }
+
+            // Gọi hàm khởi tạo
+            initializePage();
+        });
+    </script>
+
+</body>
+</html>
